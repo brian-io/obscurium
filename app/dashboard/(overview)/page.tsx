@@ -1,7 +1,7 @@
-import { lusitana } from "@/app/ui/fonts";
-import RevenueChart from "@/app/ui/dashboard/revenue-chart";
-import LatestInvoices from "@/app/ui/dashboard/latest-invoices";
-import CardWrapper  from "@/app/ui/dashboard/cards";
+import { lusitana } from "@/app/lib/fonts";
+import RevenueChart from "@/app/ui/dashboard/RevenueChart";
+import LatestInvoices from "@/app/ui/dashboard/LatestInvoice";
+import CardWrapper  from "@/app/ui/dashboard/DashboardCard";
 import { Suspense } from "react";
 import { 
     RevenueChartSkeleton,

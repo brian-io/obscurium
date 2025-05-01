@@ -1,17 +1,23 @@
-import { lusitana } from '@/app/ui/fonts';
+import { lusitana } from '@/app/lib/fonts';
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button } from './button';
+import { Button } from './Button';
 import { authenticate } from '@/app/lib/actions';
+import AcmeLogo from './AcmeLogo';
 
 export default function LoginForm() {
   return (
-    <form action={authenticate} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+    <form action={authenticate} className="">
+       <div className="flex h-full w-full align-middle justify-center rounded-t-lg bg-blue-800 p-3 ">
+          <div className="h-full text-gray-100 ">
+            <AcmeLogo />
+          </div>
+        </div>
+      <div className="flex-1 rounded-b-lg bg-gray-100 p-8">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           Please log in to continue.
         </h1>
