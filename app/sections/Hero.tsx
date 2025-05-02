@@ -11,7 +11,7 @@ export default function(){
                 Redefining Logistics for the Digital Age
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Streamline your supply chain with Obscurium's innovative logistics solutions. We leverage cutting-edge technology to optimize your logistics operations and drive business growth.
+                Streamline your supply chain with Obscurium`&apos;`s innovative logistics solutions. We leverage cutting-edge technology to optimize your logistics operations and drive business growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/consultation" className="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">

@@ -35,7 +35,7 @@ export default function(){
                 </div>
               </div>
               <p className="text-gray-600 italic relative z-10">
-                "Obscurium Logistics transformed our supply chain operations. Their innovative approach has reduced our delivery times by 35% and improved customer satisfaction significantly."
+                Obscurium Logistics transformed our supply chain operations. Their innovative approach has reduced our delivery times by 35% and improved customer satisfaction significantly.
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export default function(){
                 </div>
               </div>
               <p className="text-gray-600 italic relative z-10">
-                "Working with Obscurium has been a game-changer for our international shipping needs. Their attention to detail and cutting-edge technology provides us with complete visibility across our entire supply chain."
+                Working with Obscurium has been a game-changer for our international shipping needs. Their attention to detail and cutting-edge technology provides us with complete visibility across our entire supply chain.
               </p>
             </div>
           </div>
