@@ -1,13 +1,13 @@
 import { lusitana } from "@/app/lib/fonts";
-import RevenueChart from "@/app/ui/dashboard/RevenueChart";
-import LatestInvoices from "@/app/ui/dashboard/LatestInvoice";
-import CardWrapper  from "@/app/ui/dashboard/DashboardCard";
+import RevenueChart from "@/app/components/dashboard/RevenueChart";
+import LatestInvoices from "@/app/components/dashboard/LatestInvoice";
+import CardWrapper  from "@/app/components/dashboard/DashboardCard";
 import { Suspense } from "react";
 import { 
     RevenueChartSkeleton,
     LatestInvoicesSkeleton,
     CardSkeleton
- } from "@/app/ui/skeletons";
+ } from "@/app/components/global/Skeletons";
  import { Metadata } from 'next';
  
  export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { lusitana } from '@/app/lib/fonts';
-import Search from '@/app/ui/search';
+import Search from '@/app/components/dashboard/Search';
 import {
   CustomersTableType,
   FormattedCustomersTable,
