@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function(){
+export default function Testimonials(){
     return(
         <section className="bg-blue-50 py-16 md:py-24 relative">
         {/* Background blur effect for seamless transition */}

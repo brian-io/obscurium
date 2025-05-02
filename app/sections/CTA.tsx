@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function(){
+export default function CTA(){
     return(
         <section className="py-16 md:py-24 relative lg:h-[600px]">
         {/* Background transition */}
