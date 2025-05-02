@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 
 export default function ProfileUpload( { userId, currentImageUrl }: {
-    userId: string;
+    userId?: string;
     currentImageUrl?: string;
 } ) {
 
