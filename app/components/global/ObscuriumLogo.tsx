@@ -24,7 +24,7 @@ export default function ObscuriumLogo ({ className = '' }) {
       
       {/* Logo Text */}
       <div className="ml-2 flex flex-col">
-        <span className="text-xl font-bold text-blue-600">Obscurium</span>
+        <span className="text-xl font-bold text-blue-500">Obscurium</span>
         <span className="text-sm text-gray-100 -mt-1">Logistics</span>
       </div>
     </div>

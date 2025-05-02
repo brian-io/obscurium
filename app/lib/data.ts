@@ -7,9 +7,9 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
-} from './definitions';
+} from '@/app/lib/definitions';
 
-import { formatCurrency } from './utils';
+import { formatCurrency } from '@/app/lib/utils';
 import { unstable_noStore as noStore} from 'next/cache';
 
 
@@ -247,5 +247,72 @@ export async function getUser(email: string) {
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
+  }
+}
+
+
+// export async function updateUser(userId: string, userData: User) {
+//   try {
+//     const result = await sql
+//       `UPDATE users 
+//        SET 
+//         name = ${userData.name}, 
+//         email = ${userData.email}, 
+//         updated_at = NOW()
+//        WHERE id = ${userId}
+//        RETURNING id, name, email, image_url`
+//     ;
+    
+//     return result.rows[0] as User || null;
+//   } catch (error) {
+//     console.error('Error updating user:', error);
+//     throw new Error('Failed to update user data');
+//   }
+// }
+
+export async function updateUserImage(userId: string, imageUrl: string) {
+  try {
+    const result = await sql
+      `UPDATE users 
+       SET 
+        image_url = ${imageUrl},
+        updated_at = NOW()
+       WHERE id = ${userId}
+       RETURNING id, image_url`
+    ;
+    
+    return result.rows[0] || null;
+  } catch (error) {
+    console.error('Error updating user image:', error);
+    throw new Error('Failed to update user image');
+  }
+}
+
+export async function updateUser(userId: string, userData: Partial<User>) {
+  try {
+    const fields = Object.entries(userData).filter(([_, value]) => value !== undefined);
+
+    if (fields.length === 0) {
+      throw new Error('No fields to update.');
+    }
+
+    const updates = fields.map(
+      ([key, _], idx) => `${key} = $${idx + 1}`
+    ).join(', ');
+
+    const values = fields.map(([_, value]) => value);
+
+    const query = `
+      UPDATE users
+      SET ${updates}, updated_at = NOW()
+      WHERE id = $${fields.length + 1}
+      RETURNING *;
+    `;
+
+    const result = await sql.query(query, [...values, userId]);
+    return result.rows[0] as User || null;
+  } catch (error) {
+    console.error('Error updating user:', error);
+    throw new Error('Failed to update user');
   }
 }

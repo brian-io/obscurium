@@ -1,16 +1,32 @@
+'use client'
+
 import Link from 'next/link';
 import NavLinks from '@/app/components/dashboard/NavLink';
-import AcmeLogo from '@/app/components/global/AcmeLogo';
 import { PowerIcon, UserCircleIcon, CogIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
-import { signOut } from '@/auth';
+import { auth, signOut } from '@/auth';
 import ObscuriumLogo from '../global/ObscuriumLogo';
+import Image from 'next/image';
+import { getUser } from '@/app/lib/data';
 
-export default function SideNav() {
+export default async function SideNav() {
+  const session = await auth();
+  const userEmail = session?.user?.email || ''
+
+  // Fetch additional user data based on the email
+  let userData = null;
+  if(userEmail){
+    try{
+      userData = await getUser(userEmail);
+
+    } catch (error) {
+      console.error('Error fetching user data: ', error);
+    }
+  }
   return (
     <div className="flex h-full flex-col bg-white border-r border-gray-200 shadow-sm">
       {/* Logo section */}
       <Link
-        className="flex h-20 items-center justify-center md:h-24 bg-gradient-to-r from-blue-700 to-blue-600 relative overflow-hidden"
+        className="flex h-20 items-center justify-center md:h-24 bg-gradient-to-r from-blue-700 to-blue-950 relative overflow-hidden"
         href="/"
       >
         <div className="absolute inset-0 opacity-10">
@@ -31,15 +47,27 @@ export default function SideNav() {
       {/* User profile section */}
       <div className="px-4 py-4 border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="bg-blue-100 text-blue-600 rounded-full p-2">
-            <UserCircleIcon className="w-6 h-6" />
-          </div>
+        {userData?.image_url ? (
+            <div className="flex-shrink-0">
+              <Image 
+                src={userData.image_url} 
+                alt="User profile" 
+                width={40} 
+                height={40}
+                className="rounded-full" 
+              />
+            </div>
+          ) : (
+            <div className="bg-blue-100 text-blue-600 rounded-full p-2">
+              <UserCircleIcon className="w-6 h-6" />
+            </div>
+          )}
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-gray-900 truncate">
-              Admin User
+              {userData?.name || 'User'}
             </p>
             <p className="text-xs text-gray-500 truncate">
-              admin@logistics.com
+              {userEmail || 'No email available'}
             </p>
           </div>
           <Link href="/profile" className="text-gray-400 hover:text-gray-500">

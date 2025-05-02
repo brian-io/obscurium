@@ -4,11 +4,10 @@ import { Metadata } from 'next';
 
 export const metadata:Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s |Obscurium Logistics',
+    default: 'Obscurium Logistics',
   },
-  description: 'The official Next.js Course Dashboard, built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh')
+  description: 'Obscurium Logistics offers cutting-edge logistics and supply chain solutions for businesses of all sizes. Contact us today for a consultation.',
 }
 
 export default function RootLayout({
