@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import NavLinks from '@/app/components/dashboard/NavLink';
 import { PowerIcon, UserCircleIcon, CogIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
-import { auth, signOut } from '@/auth';
+import { auth } from '@/auth';
 import ObscuriumLogo from '../global/ObscuriumLogo';
 import Image from 'next/image';
 import { getUser } from '@/app/lib/data';
+import { signOutAction } from '@/app/lib/actions';
 
 export default async function SideNav() {
   const session = await auth();
@@ -126,10 +127,7 @@ export default async function SideNav() {
         {/* Sign out button */}
         <div className="px-3 pb-2">
           <form 
-            action={async ()=> {
-              'use server';
-              await signOut();
-            }}
+            action={signOutAction}
           >
             <button className="flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150">
               <PowerIcon className="w-5 h-5" />

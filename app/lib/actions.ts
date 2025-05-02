@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 
 
@@ -96,3 +96,8 @@ export async function createInvoice(formData: FormData) {
       throw error;
     }
   }
+
+
+export async function signOutAction() {
+  await signOut();
+}

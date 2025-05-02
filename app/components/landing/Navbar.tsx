@@ -49,7 +49,7 @@ export default function Navbar() {
                   href={page.path}
                   className={`px-4 py-2 rounded-md text-base font-medium ${
                     page.name === 'Signup'
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                      ? 'bg-blue-800 text-white hover:bg-blue-950'
                       : 'border border-gray-300 text-gray-800  hover:bg-gray-100 dark:hover:bg-gray-100'
                   }`}
                 >
@@ -110,7 +110,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden absolute w-full z-50" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 shadow-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-blue-50 dark:bg-blue-900 shadow-lg">
             {pages.map((page) => (
               <Link
                 key={page}
@@ -124,7 +124,7 @@ export default function Navbar() {
               <Link
                 key={page.name}
                 href={page.path}
-                className="block px-3 py-2 text-base font-medium text-gray-800  hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                className="block px-3 py-2 text-base font-medium text-blue-950  hover:bg-blue-100 dark:hover:bg-gray-800 rounded-md"
               >
                 {page.name}
               </Link>
