@@ -10,20 +10,14 @@ import {
   XMarkIcon
 } from '@heroicons/react/24/outline';
 import ProfileUpload from '@/app/components/user/ProfileUpload';
+import { User } from '@/app/lib/definitions';
 
-export default function ProfilePage({ userData }: { 
-  userData: {
-    id: string;
-    name: string;
-    email: string;
-    image_url?: string;
-  }
-}) {
+export default function ProfilePage({ id, name, email, image_url }: User) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: userData.name,
-    email: userData.email,
+    name: name,
+    email: email,
   });
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
@@ -48,7 +42,7 @@ export default function ProfilePage({ userData }: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: userData.id,
+          userId: id,
           ...formData
         }),
       });
@@ -69,8 +63,8 @@ export default function ProfilePage({ userData }: {
 
   const cancelEdit = () => {
     setFormData({
-      name: userData.name,
-      email: userData.email,
+      name: name,
+      email: email,
     });
     setIsEditing(false);
     setError('');
@@ -104,8 +98,8 @@ export default function ProfilePage({ userData }: {
               <div className="space-y-6">
                 <h2 className="text-lg font-semibold text-gray-800">Profile Picture</h2>
                 <ProfileUpload 
-                  userId={userData.id} 
-                  currentImageUrl={userData.image_url}
+                  userId={id} 
+                  currentImageUrl={image_url}
                 />
               </div>
             </div>
@@ -175,7 +169,7 @@ export default function ProfilePage({ userData }: {
                       ) : (
                         <div className="flex items-center text-gray-800">
                           <UserIcon className="h-5 w-5 text-gray-400 mr-2" />
-                          {userData.name}
+                          {name}
                         </div>
                       )}
                     </div>
@@ -201,7 +195,7 @@ export default function ProfilePage({ userData }: {
                       ) : (
                         <div className="flex items-center text-gray-800">
                           <EnvelopeIcon className="h-5 w-5 text-gray-400 mr-2" />
-                          {userData.email}
+                          {email}
                         </div>
                       )}
                     </div>
