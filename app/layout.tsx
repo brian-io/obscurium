@@ -1,6 +1,8 @@
 import '@/app/global.css'
 import { inter } from '@/app/lib/fonts'
 import { Metadata } from 'next';
+import AuthProvider from './AuthProvider';
+import { ToastProvider } from './components/global/Toast';
 
 export const metadata:Metadata = {
   title: {
@@ -17,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+          <AuthProvider>
+            <ToastProvider>
+               {children}
+            </ToastProvider>
+          </AuthProvider>
+        </body>
     </html>
   );
 }

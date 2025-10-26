@@ -1,32 +1,31 @@
 import NextAuth from 'next-auth';
-import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from '@/auth.config';
-import { z } from 'zod';
-import bcrypt from 'bcryptjs';
-import { getUser } from '@/app/lib/data';
- 
+import { authOptions } from './auth.config';
 
- 
-export const { auth, signIn, signOut } = NextAuth({
-  ...authConfig,
-  providers: [
-    Credentials({
-      async authorize(credentials) {
-        const parsedCredentials = z
-          .object({ email: z.string().email(), password: z.string().min(6) })
-          .safeParse(credentials);
- 
-        if (parsedCredentials.success) {
-          const { email, password } = parsedCredentials.data;
-          const user = await getUser(email);
-          if (!user) return null;
-          const passwordsMatch = await bcrypt.compare(password, user.password)
+// Define types for better type safety
+import { Session } from 'next-auth';
 
-          if (passwordsMatch) return user;
-        }
- 
-        return null;
-      },
-    }),
-  ],
-});
+// Define custom user type
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  image_url?: string | null;
+}
+
+// Extend the Session type to include token
+export interface CustomSession extends Session {
+  token?: string;
+  user: {
+    id: string;
+    name?: string | null;
+    email?: string | null;
+    image_url?: string | null;
+  };
+}
+
+// Create the auth object with handlers
+export const { auth, signIn, signOut, handlers } = NextAuth(authOptions);
+
+// For compatibility with older code - optional default export
+export default auth;

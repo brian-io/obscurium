@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-blue-50 border-b border-white/20 transition-all duration-300 hover:bg-opacity-2 z-50">
+    <nav className="fixed top-0 w-full bg-blue-50 backdrop-blur-sm border-b border-2 border-slate-800/20 shadow-sm transition-all duration-300 hover:bg-opacity-2 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo and brand name */}
@@ -49,8 +49,8 @@ export default function Navbar() {
                   href={page.path}
                   className={`px-4 py-2 rounded-md text-base font-medium ${
                     page.name === 'Signup'
-                      ? 'bg-blue-800 text-white hover:bg-blue-950'
-                      : 'border border-gray-300 text-gray-800  hover:bg-gray-100 dark:hover:bg-gray-100'
+                      ? 'bg-blue-900 text-white hover:bg-blue-950'
+                      : 'border border-gray-300 text-gray-800 bg-blue-50 hover:bg-blue-100 dark:hover:bg-gray-100'
                   }`}
                 >
                   {page.name}
@@ -115,7 +115,7 @@ export default function Navbar() {
               <Link
                 key={page}
                 href={`#${page.toLowerCase()}`}
-                className="block px-3 py-2 text-base font-medium text-gray-800  hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                className="block px-3 py-2 text-base font-medium text-gray-800  hover:bg-blue-100 dark:hover:bg-gray-800 rounded-md"
               >
                 {page}
               </Link>

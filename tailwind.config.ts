@@ -12,11 +12,28 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
+        // Muted color palette
+        colors: {
+          charcoal: {
+            50:  '#f5f5f3',
+            100: '#e0dfdd',
+            200: '#c6c5c3',
+            300: '#a9a8a4',
+            400: '#83827e',
+            500: '#5f5e5b',  // neutral midtone
+            600: '#4a4946',
+            700: '#3b3a37',
+            800: '#30302e',  // base
+            900: '#1e1e1c',
+          },
+        }
+        
+      },
+      animation: {
+        'slide-in': 'slideIn 0.3s ease-out',
+        'slide-out': 'slideOut 0.3s ease-in',
+        'fade-in': 'fadeIn 0.3s ease-out',
+        'fade-out': 'fadeOut 0.3s ease-in',
       },
     },
     keyframes: {
@@ -25,6 +42,26 @@ const config: Config = {
           transform: 'translateX(100%)',
         },
       },
+      slideIn: {
+        '0%': { transform: 'translateX(100%)', opacity: '0' },
+        '100%': { transform: 'translateX(0)', opacity: '1' },
+      },
+      slideOut: {
+        '0%': { transform: 'translateX(0)', opacity: '1' },
+        '100%': { transform: 'translateX(100%)', opacity: '0' },
+      },
+      fadeIn: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '1' },
+      },
+      fadeOut: {
+        '0%': { opacity: '1' },
+        '100%': { opacity: '0' },
+      },
+    },
+    transitionProperty: {
+      'height': 'height',
+      'spacing': 'margin, padding',
     },
   },
   plugins: [require('@tailwindcss/forms')],
